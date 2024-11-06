@@ -30,7 +30,7 @@
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
   --bs-primary: #4555d2;
-  --bs-secondary: #F65038;
+  --bs-secondary: #9ad723;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
   --bs-warning: #ffc107;
@@ -2971,19 +2971,19 @@ textarea.form-control-lg {
 
 .btn-secondary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #F65038;
-  --bs-btn-border-color: #F65038;
+  --bs-btn-bg: #9ad723;
+  --bs-btn-border-color: #9ad723;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #f0371b;
-  --bs-btn-hover-border-color: #f83112;
+  --bs-btn-hover-bg: #7aff00;
+  --bs-btn-hover-border-color: #7aff00;
   --bs-btn-focus-shadow-rgb: 212, 73, 136;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #a3215c;
-  --bs-btn-active-border-color: #991f56;
+  --bs-btn-active-bg: #57db0d;
+  --bs-btn-active-border-color: #57db0d;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #F65038;
-  --bs-btn-disabled-border-color: #F65038;
+  --bs-btn-disabled-bg: #9ad723;
+  --bs-btn-disabled-border-color: #9ad723;
 }
 
 .btn-success {
@@ -3106,19 +3106,19 @@ textarea.form-control-lg {
 }
 
 .btn-outline-secondary {
-  --bs-btn-color: #F65038;
-  --bs-btn-border-color: #F65038;
+  --bs-btn-color: #96db11;
+  --bs-btn-border-color: #96db11;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #F65038;
-  --bs-btn-hover-border-color: #F65038;
+  --bs-btn-hover-bg: #7aff00;
+  --bs-btn-hover-border-color: #7aff00;
   --bs-btn-focus-shadow-rgb: 204, 41, 115;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #F65038;
-  --bs-btn-active-border-color: #F65038;
+  --bs-btn-active-bg: #57db0d;
+  --bs-btn-active-border-color: #57db0d;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #F65038;
+  --bs-btn-disabled-color: #9ad723;
   --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #F65038;
+  --bs-btn-disabled-border-color: #9ad723;
   --bs-gradient: none;
 }
 
@@ -6754,7 +6754,7 @@ textarea.form-control-lg {
 }
 
 .link-secondary {
-  color: #F65038 !important;
+  color: #9ad723 !important;
 }
 .link-secondary:hover, .link-secondary:focus {
   color: #a3215c !important;

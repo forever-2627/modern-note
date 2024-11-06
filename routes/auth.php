@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\Auth as AuthMiddleware;
 
 Route::middleware('guest', AuthMiddleware::class)->group(function () {
-//    Route::get('register', [RegisteredUserController::class, 'create'])
-//                ->name('register');
-//
-//    Route::post('register', [RegisteredUserController::class, 'store']);
+    Route::get('register', [RegisteredUserController::class, 'create'])
+                ->name('register.get');
 
-    Route::get('/admin/login', function (){ return view('admin.admin_login');})->name('admin.login');
+    Route::post('register', [RegisteredUserController::class, 'store'])->name('register.post');
+
+//    Route::get('/admin/login', function (){ return view('admin.admin_login');})->name('admin.login');
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login.get');

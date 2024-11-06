@@ -1,24 +1,25 @@
 body{
   font-size: 14px!important;
+
 }
 
 /* Header */
 
 nav{
-  background: #FFF8ED;
+  background: #04020bb5;
 }
 
 header{
-  background: #FFF8ED;
+  background: #04020bb5;
 }
 
 a, p{
-  color: #3C2695!important;
+  color: #FFFFFF!important;
 }
 
 .logo-quick{
   font-size: 30px;
-  color: #F65038;
+  color: #9ad723;
 }
 
 .logo-funds{
@@ -27,7 +28,7 @@ a, p{
 }
 
 .header-title{
-  color: #F65038;
+  color: #62d0ef;
   font-size: 3rem;
 }
 
@@ -42,12 +43,13 @@ a, p{
 }
 
 .text-primary{
-  color: #F65038!important;
+  color: #FFFFFF!important;
 }
 
 footer{
   background: url('../images/footer.png');
   background-size: cover;
+    background-blend-mode: luminosity;
 }
 
 .footer-desc{

@@ -30,21 +30,19 @@
 
             .auth-logo{
                 width: 30%;
-                background: white;
-                padding: 1rem;
                 border-radius: 1rem;
             }
         </style>
     @endpush
 
-    <section class="ragister-section centred sec-pad position-relative">
+    <section class="ragister-section centred position-relative">
         <img src="{{asset('guest/images/auth-back.jpg')}}" class="position-fixed auth-back">
         <div class="position-fixed auth-overlay auth-back"></div>
         <div class="auto-container">
             <div class="row clearfix mt-5">
                 <div class="col-xl-8 col-lg-12 col-md-12 offset-xl-2 big-column">
                     <div class="inner-box mt-5">
-                        <img src="{{asset('upload/logo.png')}}" class="auth-logo"/>
+                        <img src="{{asset('upload/logo.jpeg')}}" class="auth-logo"/>
                         <h4 class="text-white">Sign In</h4>
                         <form action="{{ route('login.post') }}" method="post" class="default-form">
                             @csrf
@@ -55,6 +53,9 @@
                             <div class="form-group">
                                 <label class="text-white" for="password">Password</label>
                                 <input type="password" name="password" id="password" required="">
+                            </div>
+                            <div class="form-group mb-2 " style="text-align: start">
+                                <a class="" href="{{route('register.get')}}">I don't have one.</a>
                             </div>
                             <div class="form-group message-btn">
                                 <button type="submit" class="btn btn-primary w-100 py-3">Sign In</button>

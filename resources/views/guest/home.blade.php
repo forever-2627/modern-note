@@ -4,15 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com" >
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin >
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
     <link rel="stylesheet" href="{{asset('guest/css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/styles.css')}}">
     <link rel="stylesheet" href="{{asset('guest/css/toastr.min.css')}}">
-    <link rel="icon" href="{{asset('upload/favicon.png')}}">
-    <title>Best Loan</title>
+    <link rel="icon" href="{{asset('upload/logo.jpeg')}}">
+    <title>Modern Note</title>
+    <style>
+        .banner-image{
+            padding: 4rem 1rem!important;
+            box-shadow: 10px 10px 10px 10px #fefefe!important;;
+            border-radius: 4rem!important;;
+            background: white!important;;
+            transform: rotate(8deg)!important;;
+        }
+
+        body{
+            background: url("{{ asset('/guest/images/banner.jpg') }}");
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg sticky-top navbar-light">
@@ -33,14 +47,21 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ms-auto">
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>--}}
+                {{--</li>--}}
+                {{--<li class="nav-item">--}}
+                    {{--<a class="nav-link" href="#contact">About Us</a>--}}
+                {{--</li>--}}
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="{{route('home')}}">Home</a>
+                    <a href="{{route('login.get')}}"
+                       class="nav-link btn btn-outline-secondary px-4 text-white signin-button">
+                        Sign In
+                    </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">About Us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn btn-secondary px-4 mx-4 text-white signin-button" href="{{route('login.get')}}">Sign In</a>
+                    <a class="nav-link btn btn-secondary px-4 mx-4 text-white signin-button"
+                       href="{{route('register.get')}}">Sign Up</a>
                 </li>
             </ul>
         </div>
@@ -53,113 +74,36 @@
             <div class="col-lg-6">
                 <div class="mt-lg-6 mt-sm-2">
                     <h1 class="xl-text header-title">
-                        Quick and Easy Loans for Your Financial Needs.
+                        Elevate Your Thoughts and Achieve More
                     </h1>
                     <p class="lead mb-4">
-                        Our loan services offer a hassle-free and streamlined borrowing experience, providing you with the funds you need in a timely manner to meet your financial requirements.
+                        Welcome to your personal sanctuary for creativity and growth. Start each day with a spark of
+                        encouragement, and seamlessly organize your thoughts with our intuitive note-taking and tagging
+                        system. Keep track of your journey, celebrate your achievements, and watch your progress
+                        unfold—all in one secure and private space.
                     </p>
                     <a href="{{route('login.get')}}" class="btn btn-outline-secondary btn-lg m-2">
                         Sign In
                     </a>
+                    <a class="btn btn-secondary btn-lg m-2"
+                       href="{{route('register.get')}}">Sign Up</a>
                 </div>
             </div>
             <div class="col-lg-6 d-flex align-items-center">
-                <div class="image-container">
+                <div class="banner-image">
                     <img src="{{asset('guest/images/header.png')}}" alt="" class="img-fluid">
                 </div>
             </div>
         </div>
     </div>
 </header>
-<section id="contact" class="contact py-6 position-relative">
-    <div class="container position-relative z-3">
-        <div class="row">
-            <div class="col-lg-6 col-sm-12 d-md-block">
-                <div class="mt-md-6 mt-sm-1">
-                    <h1 class="xl-text text-primary">
-                        About us
-                    </h1>
-                    <p class="lead mb-4">
-                        ISBM Loans- Your trusted financial partner for loans. Quick approvals, competitive rates, and personalized solutions to meet your unique needs. Empowering you to achieve your financial goals. Apply online today!
-                    </p>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-12 px-lg-4 px-sm-2">
-                <div class="card-header border-0">
-                    <h1 class="xl-text text-primary">
-                        Contact us
-                    </h1>
-                    <p class="lead mb-4">
-                        To enquire About a loan, please send us your contact information below with a short message
-                    </p>
-                    <h6 class="text-muted"></h6>
-                </div>
-
-                <div class="card shadow-md py-5 px-3 border-5">
-                    <div class="card-body">
-                        <form action="{{route('guest.message.store')}}" method="post">
-                            @csrf
-                            <div class="mb-4">
-                                <input
-                                        name="title"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Title"
-                                        required>
-                            </div>
-                            <div class="mb-4">
-                                <input
-                                        name="name"
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Your Name"
-                                        required>
-                            </div>
-                            <div class="mb-4">
-                                <input
-                                        type="text"
-                                        name="phone_number"
-                                        class="form-control"
-                                        placeholder="Phone Number"
-                                        required>
-                            </div>
-                            <div class="mb-4">
-                                <input
-                                        type="email"
-                                        name="email"
-                                        class="form-control"
-                                        placeholder="Email Address"
-                                        required>
-                            </div>
-                            <div class="mb-4">
-                          <textarea
-                                  class="form-control"
-                                  name="message"
-                                  placeholder="Enter message"
-                                  rows="8"
-                                  required
-                          ></textarea>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <button
-                                        type="submit"
-                                        class="btn btn-secondary btn-block text-white signin-button"
-                                >Send</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 <footer class="footer bg-light py-lg-6 py-sm-2 px-sm-2">
     <div class="container">
         <div class="row">
             <div class="col-md-9 my-3">
-                <span class="logo-quick">ISMB<span class="logo-funds">Loans</span></span>
+                <span class="logo-quick">Modern<span class="logo-funds">Notes</span></span>
                 <p class="mt-3 text-white footer-desc">
-                    Our mission is to empower individuals and businesses by <br>providing them with the financial resources they need to achieve their goals.
+                    Our mission is to empower individuals to capture their thoughts and track their progress seamlessly, providing the tools needed to achieve their personal and professional goals
                 </p>
                 <div class="social-container">
                     <a href="#" class="me-4">
@@ -208,7 +152,7 @@
 <script>
             @if(Session::has('message'))
     var type = "{{ Session::get('alert-type','info') }}"
-    switch(type){
+    switch (type) {
         case 'info':
             toastr.info(" {{ Session::get('message') }} ");
             break;
