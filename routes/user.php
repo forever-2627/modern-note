@@ -9,7 +9,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\User as UserMiddleware;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
-use App\Http\Controllers\User\LoanController as UserLoanController;
+use App\Http\Controllers\User\NoteController as UserNoteController;
 use App\Http\Controllers\User\ProfileController as UserProfileController;
 use App\Http\Controllers\User\ContactController as UserContactController;
 use App\Http\Controllers\User\MessageController as UserMessageController;
@@ -17,13 +17,15 @@ use App\Http\Controllers\User\MessageController as UserMessageController;
 
 Route::middleware(UserMiddleware::class)->group(function (){
     Route::get('/user', [ UserDashboardController::class, 'index' ])->name('user.dashboard');
-    Route::get('/user/loans', [ UserLoanController::class, 'index' ])->name('user.loans');
 
-    Route::get('/user/edit_profile', [ UserProfileController::class, 'edit_profile' ])->name('user.profile.edit');
-    Route::post('/user/edit_profile', [UserProfileController::class, 'profile_update_request'])->name('user.profile.update');
-    Route::get('/user/change_password', [ UserProfileController::class, 'change_password' ])->name('user.password.change');
-    Route::post('/user/change_password', [UserProfileController::class, 'password_update_request'])->name('user.password.update');
+    Route::get('/user/notes', [ UserNoteController::class, 'index' ])->name('user.notes');
+    Route::get('/user/notes/add', [ UserNoteController::class, 'add_get' ])->name('user.notes.add.get');
+    Route::post('/user/notes/add', [ UserNoteController::class, 'add_post' ])->name('user.notes.add.post');
+    Route::get('/user/notes/view/{id}', [ UserNoteController::class, 'view' ])->name('user.notes.view');
+    Route::get('/user/notes/edit/{id}', [ UserNoteController::class, 'edit_get' ])->name('user.notes.edit.get');
+    Route::post('/user/notes/edit', [ UserNoteController::class, 'edit_post' ])->name('user.notes.edit.post');
+    Route::get('/user/notes/delete/{id}', [ UserNoteController::class, 'delete' ])->name('user.notes.delete');
 
-    Route::get('/user/contact', [ UserContactController::class, 'index' ])->name('user.contact');
-    Route::post('/user/message', [ UserMessageController::class, 'store'])->name('user.message.store');
+
+
 });

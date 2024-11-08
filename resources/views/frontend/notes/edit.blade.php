@@ -2,11 +2,16 @@
 @section('main')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
-
-
+    <section class="page-title centred" style="background-image: url({{ asset('frontend/assets/images/background/page-title.jpg') }});">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Achieve Note </h1>
+            </div>
+        </div>
+    </section>
 
     <!-- sidebar-page-container -->
-    <section class="sidebar-page-container blog-details sec-pad-2">
+    <section class="sidebar-page-container blog-details sec-pad-2" style="overflow: scroll">
         <div class="auto-container">
             <div class="row clearfix">
                 @php
@@ -42,22 +47,34 @@
                         <div class="news-block-one">
                             <div class="inner-box">
                                 <div class="lower-content">
-                                    <form id="change_password_form" action="{{route('user.password.update')}}" method="post" class="default-form" enctype="multipart/form-data">
+                                    <form id="add_note_form" action="{{route('user.notes.edit.post')}}" method="post" class="default-form" enctype="multipart/form-data">
                                         @csrf
+                                        <input type="hidden" name="note_id" value="{{$note->id}}">
                                         <div class="form-group">
-                                            <label>Old Password</label>
-                                            <input type="password" name="old_password" class="form-control" id="old_password">
+                                            <label>Title</label>
+                                            <input type="text" name="title" class="form-control" id="title" value="{{$note->title}}"/>
                                         </div>
                                         <div class="form-group">
-                                            <label>New Password </label>
-                                            <input type="password" name="new_password" class="form-control" id="new_password">
+                                            <label>Achievement </label>
+                                            <textarea rows="8" type="text" name="description" class="form-control" id="description">{{$note->description}}</textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label>Confirm New Password</label>
-                                            <input type="password" name="new_password_confirmation" class="form-control" id="new_password_confirmation">
+                                            <label>Select Date</label>
+                                            <input type="text" name="date" class="form-control" id="date" value="{{$note->date}}"/>
                                         </div>
-                                        <div class="form-group message-btn d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary py-3"><i class="fa fa-save"></i> Save Changes </button>
+                                        @php
+                                            $categories = \App\Models\Category::all();
+                                        @endphp
+                                        <div class="form-group">
+                                            <label>Category</label>
+                                            <select name="category" class="form-control" id="category">
+                                                @foreach($categories as $category)
+                                                    <option value="{{$category->id}}" @if($category->id == $note->category_id) selected @endif>{{$category->name}}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary py-3 mt-4"><i class="fa fa-save"></i> Save Changes </button>
                                         </div>
                                     </form>
                                 </div>
@@ -72,31 +89,22 @@
     @push('script')
         <script type="text/javascript">
             $(document).ready(function (){
-                $('#change_password_form').validate({
+                $('#add_note_form').validate({
                     rules: {
-                        old_password:{
+                        title:{
                             required : true,
                         },
-                        new_password: {
+                        description: {
                             required : true,
                             minlength: 5
-                        },
-                        new_password_confirmation:{
-                            required: true,
-                            equalTo: '#new_password'
                         }
                     },
                     messages :{
-                        old_password:{
-                            required : 'Password is required!',
+                        title:{
+                            required : 'You have to input tile',
                         },
-                        new_password: {
-                            required : 'Password is required!',
-                            minlength: 'Password length must be at least 5 characters!'
-                        },
-                        new_password_confirmation:{
-                            required: 'Please input this field!',
-                            equalTo: 'This field must be same as password!'
+                        description: {
+                            required : 'Description is required',
                         }
                     },
                     errorElement : 'span',
@@ -111,6 +119,10 @@
                         $(element).removeClass('is-invalid');
                     },
                 });
+            });
+
+            $("#date").datepicker({
+                dateFormat: "yy-mm-dd" // Adjust date format if needed
             });
         </script>
     @endpush

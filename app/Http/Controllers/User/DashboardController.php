@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index(){
-        return redirect(route('user.loans'));
+        return redirect(route('user.notes'));
     }
 }

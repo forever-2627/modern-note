@@ -3228,7 +3228,6 @@ div#mCSB_1_container{
   position: relative;
   display: block;
   border-radius: 10px;
-  overflow: hidden;
   background-color: #ffffff;
   box-shadow: 0 10px 30px 0px rgb(0 0 0 / 10%);
 }

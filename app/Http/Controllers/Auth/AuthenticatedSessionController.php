@@ -25,6 +25,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+        $notification = [
+            'message' => 'Welcome back!',
+            'alert-type' => 'success'
+        ];
         try{
             $request->authenticate();
         }catch (\Exception $e){
@@ -37,23 +41,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if($request->user()->role_id == config('constants.roles.admin_role_id')){
-            return redirect(route('admin.dashboard'));
-        }
-        else if($request->user()->role_id == config('constants.roles.staff_role_id')){
-            return redirect(route('staff.loans'));
-        }
-        else if($request->user()->role_id == config('constants.roles.user_role_id')){
-            if($request->user()->password_changed == 0) {
-                $notification = array(
-                    'message' => 'Please change your password on your security page',
-                    'alert-type' => 'warning'
-                );
-                return redirect(route('user.loans'))->with($notification);
-            }
-            return redirect(route('user.dashboard'));
-        }
-        else return redirect(route('login.get'));
+        return redirect(route('user.notes'))->with($notification);
     }
 
     /**

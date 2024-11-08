@@ -22,6 +22,4 @@ Route::middleware('auth')->group(function () {
 Route::post('/message', [GuestMessageController::class, 'store'])->name('guest.message.store');
 
 require __DIR__.'/auth.php';
-require __DIR__.'/admin.php';
-require __DIR__.'/staff.php';
 require __DIR__.'/user.php';
