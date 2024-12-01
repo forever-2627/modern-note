@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Note;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
     public function index(){
-        return redirect(route('user.notes'));
+        $notes = Note::where(['pinned' => true])->get();
+        return view('frontend.dashboard.index', ['notes' => $notes]);
     }
 }

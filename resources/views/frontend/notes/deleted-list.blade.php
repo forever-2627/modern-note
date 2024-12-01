@@ -72,7 +72,7 @@
                                             <th scope="col">Title</th>
                                             <th scope="col">Description</th>
                                             <th scope="col">Date</th>
-                                            <th scope="col" style="min-width: 170px">Action</th>
+                                            <th scope="col" style="min-width: 130px">Action</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -84,9 +84,7 @@
                                                     <td>{{$note->date}}</td>
                                                     <td>
                                                         <a href="{{route('user.notes.view', $note->id)}}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i></a>
-                                                        <a href="{{route('user.notes.edit.get', $note->id)}}" class="btn btn-sm btn-success"><i class="fa fa-edit"></i></a>
-                                                        <a href="{{route('user.notes.pin', $note->id)}}" class="btn btn-sm btn-danger"><i class="fa fa-map-pin"></i></a>
-                                                        <a href="{{route('user.notes.delete', $note->id)}}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                                        <a href="{{route('user.notes.restore', $note->id)}}" class="btn btn-sm btn-danger"><i class="fa fa-trash-restore"></i></a>
                                                     </td>
                                                 </tr>
                                             @endforeach

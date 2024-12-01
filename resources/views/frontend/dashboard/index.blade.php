@@ -2,11 +2,16 @@
 @section('main')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
-
-
+    <section class="page-title centred" style="background-image: url({{ asset('frontend/assets/images/background/page-title.jpg') }});">
+        <div class="auto-container">
+            <div class="content-box clearfix">
+                <h1>Achieve Note </h1>
+            </div>
+        </div>
+    </section>
 
     <!-- sidebar-page-container -->
-    <section class="sidebar-page-container blog-details sec-pad-2">
+    <section class="sidebar-page-container blog-details sec-pad-2" style="overflow: scroll">
         <div class="auto-container">
             <div class="row clearfix">
                 @php
@@ -42,24 +47,23 @@
                         <div class="news-block-one">
                             <div class="inner-box">
                                 <div class="lower-content">
-                                    <form id="change_password_form" action="{{route('user.password.update')}}" method="post" class="default-form" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label>Old Password</label>
-                                            <input type="password" name="old_password" class="form-control" id="old_password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>New Password </label>
-                                            <input type="password" name="new_password" class="form-control" id="new_password">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Confirm New Password</label>
-                                            <input type="password" name="new_password_confirmation" class="form-control" id="new_password_confirmation">
-                                        </div>
-                                        <div class="form-group message-btn d-flex justify-content-end">
-                                            <button type="submit" class="btn btn-primary py-3"><i class="fa fa-save"></i> Save Changes </button>
-                                        </div>
-                                    </form>
+                                    <h3 class="mb-0">Pinned Notes</h3>
+                                    <div class="d-flex flex-wrap align-center p-3 ">
+                                        @foreach($notes as $note)
+                                            <div class="card shadow-lg border-0 m-3" style="width: 240px">
+                                                <div class="card-header border-0">
+                                                    <b>{{$note->title}}</b>
+                                                </div>
+                                                <div class="card-body">
+                                                    {{ucfirst(truncate_words($note->description, 10))}}
+                                                </div>
+                                                <div class="card-footer border-0 d-flex justify-content-end">
+                                                    <a href="{{route('user.notes.view', $note->id)}}" class="btn btn-primary mr-2"><i class="fa fa-eye"></i> View </a>
+                                                    <a href="{{route('user.notes.unpin', $note->id)}}" class="btn btn-danger"><i class="fa fa-eraser"></i> Unpin </a>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -72,31 +76,22 @@
     @push('script')
         <script type="text/javascript">
             $(document).ready(function (){
-                $('#change_password_form').validate({
+                $('#add_note_form').validate({
                     rules: {
-                        old_password:{
+                        title:{
                             required : true,
                         },
-                        new_password: {
+                        description: {
                             required : true,
                             minlength: 5
-                        },
-                        new_password_confirmation:{
-                            required: true,
-                            equalTo: '#new_password'
                         }
                     },
                     messages :{
-                        old_password:{
-                            required : 'Password is required!',
+                        title:{
+                            required : 'You have to input tile',
                         },
-                        new_password: {
-                            required : 'Password is required!',
-                            minlength: 'Password length must be at least 5 characters!'
-                        },
-                        new_password_confirmation:{
-                            required: 'Please input this field!',
-                            equalTo: 'This field must be same as password!'
+                        description: {
+                            required : 'Description is required',
                         }
                     },
                     errorElement : 'span',
@@ -111,6 +106,10 @@
                         $(element).removeClass('is-invalid');
                     },
                 });
+            });
+
+            $("#date").datepicker({
+                dateFormat: "yy-mm-dd" // Adjust date format if needed
             });
         </script>
     @endpush
