@@ -10,8 +10,8 @@ use Mockery\Matcher\Not;
 
 class NoteController extends Controller
 {
-    public function index($id){
-        $notes = Note::where(['deleted' => false, 'category_id'=>$id])->get();
+    public function index(){
+        $notes = Note::where(['deleted' => false])->get();
         return view('frontend.notes.list', ['notes' => $notes]);
     }
 

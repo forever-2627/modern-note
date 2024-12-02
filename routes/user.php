@@ -18,7 +18,7 @@ use App\Http\Controllers\User\MessageController as UserMessageController;
 Route::middleware(UserMiddleware::class)->group(function (){
     Route::get('/user', [ UserDashboardController::class, 'index' ])->name('user.dashboard');
 
-    Route::get('/user/notes/{id}', [ UserNoteController::class, 'index' ])->name('user.notes');
+    Route::get('/user/notes', [ UserNoteController::class, 'index' ])->name('user.notes');
     Route::get('/user/notes/add', [ UserNoteController::class, 'add_get' ])->name('user.notes.add.get');
     Route::post('/user/notes/add', [ UserNoteController::class, 'add_post' ])->name('user.notes.add.post');
     Route::get('/user/notes/view/{id}', [ UserNoteController::class, 'view' ])->name('user.notes.view');
